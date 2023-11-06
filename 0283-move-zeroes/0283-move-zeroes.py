@@ -3,12 +3,11 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
+        left = 0
         
-        j = 0
-        while j < len(nums):
-            if nums[j] == 0:
-                nums.append(0)
-                nums.remove(0)
-            j += 1
-        print(nums)
+        for right in range(len(nums)):
+            if nums[right] != 0:
+                nums[right], nums[left] = nums[left], nums[right]
+                left += 1
         
+        return nums
