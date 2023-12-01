@@ -1,3 +1,5 @@
 class Solution:
     def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
-        return "".join(word1) == "".join(word2)
+        Sum1 = "".join(word1)
+        Sum2 = "".join(word2)
+        return Sum1 == Sum2
