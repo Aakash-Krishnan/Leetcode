@@ -5,7 +5,6 @@ class Solution:
         start = 1
 
         while m <= n:
-            print(start, m, ans)
             if (m + 7) <= n:
                 ans += ((7)*(start + (start + 6))) // 2
             else:
