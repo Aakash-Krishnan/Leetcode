@@ -1,8 +1,8 @@
 class Solution:
     def largestOddNumber(self, num: str) -> str:
         idx = -1
-        for i in range(len(num)):
+        for i in range(len(num)-1, -1, -1):
             if int(num[i]) & 1:
-                idx = i
+                return num[:i+1]
         
-        return "" if idx == -1 else num[: idx+1]
+        return "" 
