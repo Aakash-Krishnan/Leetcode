@@ -1,17 +1,13 @@
 class Solution:
     def buyChoco(self, prices: List[int], money: int) -> int:
-        leftMoney = money
-        cnt = 0
         
-        for i in sorted(prices):
-            if i < money:
-                cnt += 1
-                leftMoney -= i
-                
-            if leftMoney < 0:
-                return money
-            
-            if cnt == 2:
-                return leftMoney
+        first = second = float("inf")
         
-        return money
+        for price in prices:
+            if price < first:
+                first, second = price, first
+            elif price < second:
+                second = price
+        
+        leftMoney = money - (first + second)
+        return leftMoney if leftMoney >= 0 else money
