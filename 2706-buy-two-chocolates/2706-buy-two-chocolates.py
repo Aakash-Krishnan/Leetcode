@@ -2,10 +2,8 @@ class Solution:
     def buyChoco(self, prices: List[int], money: int) -> int:
         leftMoney = money
         cnt = 0
-        prices.sort()
-        print(prices)
         
-        for i in prices:
+        for i in sorted(prices):
             if i < money:
                 cnt += 1
                 leftMoney -= i
