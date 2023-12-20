@@ -8,24 +8,37 @@ class Solution:
         if not head or not head.next and head.val == val:
             return None
         
-        prev = temp = head
-        flag = False
-        
-        while temp:
-            if temp.val == val:
-                if temp == head:
-                    head = temp = prev = head.next
-                    
-                else:
-                    prev.next = temp.next
-                    temp.next = None
-                    temp = prev.next
+        dummy = ListNode("dummy")
+        tail = dummy
+        while head:
+            if head.val != val:
+                tail.next = head
+                tail = tail.next
+                head = head.next
             else:
-                temp = temp.next
-                if flag:
-                    prev = prev.next
-                else:
-                    flag = True
+                tail.next = head.next
+                head.next = None
+                head = tail.next
         
-        return head
+        return dummy.next
+        
+#         prev = temp = head
+#         flag = False
+        
+#         while temp:
+#             if temp.val == val:
+#                 if temp == head:
+#                     head = temp = prev = head.next   
+#                 else:
+#                     prev.next = temp.next
+#                     temp.next = None
+#                     temp = prev.next
+#             else:
+#                 temp = temp.next
+#                 if flag:
+#                     prev = prev.next
+#                 else:
+#                     flag = True
+        
+#         return head
             
