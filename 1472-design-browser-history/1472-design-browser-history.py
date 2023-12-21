@@ -1,8 +1,8 @@
 class Node:
-    def __init__(self, val):
+    def __init__(self, val, prev=None):
         self.val = val
         self.next = None
-        self.prev = None
+        self.prev = prev
 
 class BrowserHistory:
 
@@ -10,9 +10,8 @@ class BrowserHistory:
         self.curr = Node(homepage)
 
     def visit(self, url: str) -> None:
-        newNode = Node(url)
+        newNode = Node(url, self.curr)
         self.curr.next = newNode
-        newNode.prev = self.curr
         self.curr = self.curr.next
 
     def back(self, steps: int) -> str:
