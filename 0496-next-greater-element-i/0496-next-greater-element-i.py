@@ -2,6 +2,7 @@ class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
         cache = {}
         stack = []
+        ans = []
         
         for i in range(len(nums2)-1, -1, -1):
             while stack and nums2[stack[-1]] <= nums2[i]:
@@ -14,8 +15,7 @@ class Solution:
             
             stack.append(i)
             
-        stack.clear()
         for i in nums1:
-            stack.append(cache[i])
+            ans.append(cache[i])
         
-        return stack
+        return ans
