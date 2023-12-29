@@ -3,15 +3,14 @@ class Solution:
         cache = {}
         stack = []
         
-        for i in nums1:
-            cache[i] = -1
-        
         for i in range(len(nums2)-1, -1, -1):
             while stack and nums2[stack[-1]] <= nums2[i]:
                 stack.pop()
             
-            if stack and nums2[i] in cache:
+            if stack:
                 cache[nums2[i]] = nums2[stack[-1]]
+            else:
+                cache[nums2[i]] = -1
             
             stack.append(i)
             
