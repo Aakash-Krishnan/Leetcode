@@ -2,7 +2,6 @@ class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
         cache = {}
         stack = []
-        ans = []
         
         for i in nums1:
             cache[i] = -1
@@ -16,7 +15,8 @@ class Solution:
             
             stack.append(i)
             
+        stack.clear()
         for i in nums1:
-            ans.append(cache[i])
+            stack.append(cache[i])
         
-        return ans
+        return stack
