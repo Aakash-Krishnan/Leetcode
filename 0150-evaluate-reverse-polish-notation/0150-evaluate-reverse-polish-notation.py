@@ -11,16 +11,12 @@ class Solution:
             match i:
                 case "+":
                     stack.append(val1 + val2)
-                    continue
                 case "-":
                     stack.append(val1 - val2)
-                    continue
                 case "*":
                     stack.append(val1 * val2)
-                    continue
                 case "/":
                     stack.append(int(val1 / val2))
-                    continue
                 case default:
                     stack.append(int(i))
         
