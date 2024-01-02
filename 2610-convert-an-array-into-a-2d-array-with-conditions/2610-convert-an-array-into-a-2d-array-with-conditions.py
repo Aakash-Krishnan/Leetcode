@@ -1,29 +1,21 @@
 class Solution:
     def findMatrix(self, nums: List[int]) -> List[List[int]]:
-        ans = []
-        nums.sort()
+        fmap = {}
+        for i in nums:
+            fmap[i] =  fmap.get(i, 0) + 1
         
-        for _ in range(len(nums)):
+        ans = []
+        while fmap:
             sub = []
-            flag = False
-            for j in range(len(nums)):
-                if nums[j] == -1:
-                    continue
-                    
-                elif not sub:
-                    sub.append(nums[j])
-                    nums[j] = -1
-                    if not flag:
-                        flag = True
-                    
-                elif sub[-1] != nums[j]:
-                    sub.append(nums[j])
-                    nums[j] = -1
-                    if not flag:
-                        flag = True
-                    
-            if not flag:
-                return ans
-                    
+            delet = []
+            for id, val in fmap.items():
+                sub.append(id)
+                val -= 1
+                if not val:
+                    delet.append(id)
+                fmap[id] = val
             ans.append(sub)
+            for i in delet:
+                del fmap[i]
+                
         return ans
