@@ -3,7 +3,7 @@ class Solution:
         ans = []
         nums.sort()
         
-        for i in range(len(nums)):
+        for _ in range(len(nums)):
             sub = []
             flag = False
             for j in range(len(nums)):
@@ -13,12 +13,14 @@ class Solution:
                 elif not sub:
                     sub.append(nums[j])
                     nums[j] = -1
-                    flag = True
+                    if not flag:
+                        flag = True
                     
                 elif sub[-1] != nums[j]:
                     sub.append(nums[j])
                     nums[j] = -1
-                    flag = True
+                    if not flag:
+                        flag = True
                     
             if not flag:
                 return ans
