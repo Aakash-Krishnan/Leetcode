@@ -1,17 +1,13 @@
 class Solution:
-    def numberOfBeams(self, bank: List[str]) -> int:
-        ans = 0
-        prev = 0
+    def numberOfBeams(self, bank: list[str]) -> int:
+        result = 0
+        prevFloor = 0
         
-        for i in range(len(bank)):
-            cnt = 0
-            for j in range(len(bank[0])):
-                if int(bank[i][j]):
-                    cnt += 1
+        for floor in bank:
+            devices = floor.count("1")
+            if prevFloor:
+                result += (prevFloor * devices)
             
-            if prev:
-                ans += (prev * cnt)
-            
-            if cnt:
-                prev = cnt
-        return ans
+            if devices:
+                prevFloor = devices
+        return result
