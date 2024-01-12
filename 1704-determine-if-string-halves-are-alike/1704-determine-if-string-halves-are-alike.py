@@ -1,11 +1,11 @@
 
 class Solution:
     def halvesAreAlike(self, s: str) -> bool:
-        s =s.lower()
+        cache = set('aeiouAEIOU')
         mid = len(s) // 2
         cnt1, cnt2 = 0, 0
         for i in range(len(s)):
-            if s[i] in "aeiou":
+            if s[i] in cache:
                 if 0 <= i < mid:
                     cnt1 += 1
                 else:
