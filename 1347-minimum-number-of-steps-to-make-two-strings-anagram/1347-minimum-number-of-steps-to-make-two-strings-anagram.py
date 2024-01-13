@@ -4,7 +4,7 @@ class Solution:
         Tcache = Counter(t)
         tlen = len(t)
         for i in Tcache:
-            if i in Scache.elements():
+            if Scache[i]:
                 val = Scache[i]
                 if val > Tcache[i]:
                     tlen -= Tcache[i]
