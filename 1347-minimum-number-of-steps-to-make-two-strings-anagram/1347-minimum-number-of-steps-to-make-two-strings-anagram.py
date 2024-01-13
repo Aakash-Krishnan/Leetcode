@@ -5,11 +5,8 @@ class Solution:
         tlen = len(t)
         for i in Tcache:
             if Scache[i]:
-                val = Scache[i]
-                if val > Tcache[i]:
+                if Scache[i] > Tcache[i]:
                     tlen -= Tcache[i]
-                    Tcache[i] = 0
                 else:
-                    Tcache[i] -= val
-                    tlen -= val
+                    tlen -= Scache[i]
         return tlen
