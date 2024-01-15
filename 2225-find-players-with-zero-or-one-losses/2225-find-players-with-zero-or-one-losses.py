@@ -1,4 +1,3 @@
-from collections import Counter
 class Solution:
     def findWinners(self, matches: list[list[int]]) -> list[list[int]]:
         win = Counter(matches[i][0] for i in range(len(matches)))
