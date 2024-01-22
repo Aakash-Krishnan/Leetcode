@@ -11,10 +11,10 @@ class Solution:
                 if i < N and nums[i] == curr:
                     res[0] = nums[i]
                     i += 1
-                curr += 1
             else:
                 res[1] = curr
-                curr += 1
+            curr += 1
+                
         if res[1] == -1:
             res[1] = curr
             
