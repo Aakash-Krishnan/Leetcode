@@ -1,10 +1,18 @@
 class Solution:
-    def dailyTemperatures(self, temp: List[int]) -> List[int]:
-        ans = [0 for _ in range(len(temp))]
+    def dailyTemperatures(self, A: list[int]) -> list[int]:
+        n = len(A)
+        ans = [0] * n
         stack = []
-        for curr_pos,curr_val in enumerate(temp):
-            while stack and curr_val > stack[-1][1] :                    
-                    top_pos,top_val = stack.pop()
-                    ans[top_pos] = curr_pos-top_pos                
-            stack.append((curr_pos,curr_val))            
+        i, j = 0, 0
+        
+        while i < n:
+
+            while stack and A[stack[-1]] < A[i]:
+                idx = stack.pop()
+                distance = i - idx
+                ans[idx] = distance
+                j += 1
+
+            stack.append(i)
+            i += 1
         return ans
