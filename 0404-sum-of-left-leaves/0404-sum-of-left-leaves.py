@@ -14,7 +14,7 @@ class Solution:
                 return None
             if root.left and not root.left.left and not root.left.right:
                 res += root.left.val
-                
+                return dfs(root.right)
             dfs(root.left)
             dfs(root.right)
         
