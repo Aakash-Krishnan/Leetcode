@@ -1,18 +1,15 @@
 class Solution:
     def minCost(self, colors: str, neededTime: List[int]) -> int:
-        front, back = 1, 0
-        ans = 0
+        prev = (colors[0], 0)
+        res = 0
         
-        while front < len(colors):
-            if colors[front] == colors[back]:
-                if neededTime[front] < neededTime[back]:
-                    ans += neededTime[front]
-                    # front+= 1
+        for i in range(1, len(neededTime)):
+            if colors[i] == prev[0]:
+                if neededTime[i] < neededTime[prev[1]]:
+                    res += neededTime[i]
                 else:
-                    ans += neededTime[back]
-                    back = front
-                    # front += 1
+                    res += neededTime[prev[1]]
+                    prev = [colors[i], i]
             else:
-                back = front
-            front += 1
-        return ans
+                prev = [colors[i], i]
+        return res
