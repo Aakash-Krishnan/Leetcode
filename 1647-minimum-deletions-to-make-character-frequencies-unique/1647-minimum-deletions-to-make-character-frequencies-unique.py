@@ -8,8 +8,5 @@ class Solution:
                 while cnt and cnt in cache:
                     cnt -= 1
                     res += 1
-                if cnt:
-                    cache.add(cnt)
-            else:
-                cache.add(cnt)
+            cache.add(cnt)
         return res
