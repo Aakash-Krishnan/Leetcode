@@ -4,8 +4,7 @@ class Solution:
         for i in nums:
             if len(hq) < 2:
                 heappush(hq, i)
-            elif hq[0] < i:
-                heappop(hq)
-                heappush(hq, i) 
+            else:
+                heappushpop(hq, i) 
             
         return (hq[0] - 1) * (hq[1] - 1)
