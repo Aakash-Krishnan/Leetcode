@@ -4,7 +4,7 @@ class Solution:
         cache[0] = 0
         
         for target in range(1, n + 1):
-            for s in range(1, target + 1):
+            for s in range(1, (target//2) + 1):
                 square = s* s
                 if target - square < 0:
                     break
