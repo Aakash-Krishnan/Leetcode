@@ -1,9 +1,13 @@
 class Solution:
-    def fib(self, n: int, cache={}) -> int:
-        if n in cache: return cache[n]
-        if not  n: return 0
-        if n <= 2:
-            return 1
+    def fib(self, n: int) -> int:
+        if  n <= 1:
+            return n
+        n1 = 0
+        n2 = 1
         
-        cache[n] = self.fib(n-1) + self.fib(n-2)
-        return cache[n]
+        for i in range(2, n+1):
+            num = n1 + n2
+            n1 = n2
+            n2 = num
+        
+        return n2
