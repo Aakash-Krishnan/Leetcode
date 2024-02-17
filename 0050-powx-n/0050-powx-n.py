@@ -1,20 +1,16 @@
-def power(x, n):
-    if x == 0:
-        return 0
-    if n == 0:
-        return 1
-
-    half = power(x, n//2)
-    if n&1 == 0:
-        return half * half
-    else:
-        return half * half * x
-
 class Solution:
     def myPow(self, x: float, n: int) -> float:
+        def power(a, b):
+            if not b:return 1
+            if not a:return 0
+
+            
+            half = power(a, b//2)
+            if b&1:
+                return half * half * a
+            return half * half
         
-        result = power(x, abs(n))
+        value = power(x, abs(n))
         if n >= 0:
-            return result
-        
-        return 1/result
+            return value
+        return 1/value
