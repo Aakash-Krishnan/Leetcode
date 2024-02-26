@@ -2,7 +2,8 @@ class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         n, m = len(board), len(board[0])
         visited = [[0] * m for _ in range(n)]
-
+        dirx = [[-1, 0], [0, -1], [1, 0], [0, 1]]
+        
         def dfs(r, c, i):
             if i == len(word):
                 return True
@@ -10,13 +11,14 @@ class Solution:
                 return False
             
             visited[r][c] = 1
-            res = (dfs(r+1, c, i+1) or
-                  dfs(r, c+1, i+1) or
-                  dfs(r-1, c, i+1) or
-                  dfs(r, c-1, i+1))
+            
+            for dx, dy in dirx:
+                if dfs(dx + r, dy + c, i+1):
+                    visited[r][c] = 0
+                    return True
             
             visited[r][c] = 0
-            return res
+            return False
         
         for i in range(n):
             for j in range(m):
