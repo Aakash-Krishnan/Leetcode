@@ -6,7 +6,7 @@ class Solution:
         def dfs(r, c, i):
             if i == len(word):
                 return True
-            if (r < 0 or c < 0 or r >= n or c >= m) or visited[r][c] or board[r][c] != word[i]:
+            if not (0 <= r < n) or not(0 <= c < m) or visited[r][c] or board[r][c] != word[i]:
                 return False
             
             visited[r][c] = 1
