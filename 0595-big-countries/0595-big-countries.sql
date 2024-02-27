@@ -7,4 +7,3 @@ WHERE (
         OR
         (population >= 25000000)
     )
-ORDER BY population ASC;
