@@ -9,34 +9,14 @@ class Solution:
         q = deque()
         q.append(root)
         
-        def checkOddLevel(val, prevVal, idx):
-            if (val & 1):
-                return False
-            if not idx:
-                return True
-            if prevVal <= val:
-                return False
-            return True
-            
-        def checkEvenLevel(val, prevVal, idx):
-            if not (val & 1):
-                return False
-            if not idx:
-                return True
-            if prevVal >= val:
-                return False
-            return True
-        
-        level = 0
+        level = True
         while q:
-            prevNode = -1
+            prevNode = float("-inf") if level else float("inf")
             for i in range(len(q)):
                 node = q.popleft()
-                if (level & 1):
-                    if not checkOddLevel(node.val, prevNode, i):
+                if level and (node.val % 2 == 0 or prevNode >= node.val):
                         return False
-                else:
-                    if not checkEvenLevel(node.val, prevNode, i):
+                elif not level and (node.val % 2 or prevNode <= node.val):
                         return False
                     
                 prevNode = node.val
@@ -45,7 +25,7 @@ class Solution:
                 if node.right:
                     q.append(node.right)
                     
-            level += 1
+            level = not level
         
         return True
                     
