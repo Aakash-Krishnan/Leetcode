@@ -8,44 +8,21 @@ class Solution:
         carry = 0
         head = tail = None
         
-        while l1 and l2:
-            val = l1.val + l2.val + carry
-            carry = val // 10
-            val %= 10
+        while l1 or l2 or carry:
+            v1 = l1.val if l1 else 0
+            v2 = l2.val if l2 else 0
+            Sum = v1 + v2 + carry
+            carry = Sum // 10
+            val = Sum % 10
             node = ListNode(val)
             if not head:
                 head = tail = node
             else:
                 tail.next = node
                 tail = tail.next
-            l1 = l1.next
-            l2 = l2.next
-        
-        while l1:
-            val = l1.val + carry
-            carry = val // 10
-            val %= 10
-            node = ListNode(val)
-            if not head:
-                head = tail = node
-            else:
-                tail.next = node
-                tail = tail.next
-            l1 = l1.next
-        while l2:
-            val = l2.val + carry
-            carry = val // 10
-            val %= 10
-            node = ListNode(val)
-            if not head:
-                head = tail = node
-            else:
-                tail.next = node
-                tail = tail.next
-            l2 = l2.next
-        
-        if carry:
-            node = ListNode(carry)
-            tail.next = node
+            if l1:
+                l1 = l1.next
+            if l2:
+                l2 = l2.next
         
         return head
